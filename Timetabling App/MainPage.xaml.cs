@@ -1,31 +1,55 @@
-﻿using System;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Windows;
 using Microsoft.Phone.Controls;
+using Timetabling_App.Services;
 
 namespace Timetabling_App
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        // Constructor
+        public List<string> ModuleIds { get; set; }
+
+        public Visibility ModuleWizardVisibility = Visibility.Visible;
+        public Visibility TimetableVisibility = Visibility.Collapsed;
+
         public MainPage()
         {
+            ModuleIds = new List<string>();
+
             InitializeComponent();
-            getTimetableData();
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
-        private void getTimetableData()
+        public void ShowModuleWizard()
         {
-            string URI = "http://mobile.nottingham.ac.uk/hack/data/timetabling/2015/activities/module/DEFE15F6B6D777913C727DD801F88C6B";
-            WebRequest webRequest = WebRequest.Create(URI);
-           
+            ModuleWizardVisibility = Visibility.Visible;
         }
 
-        private void LayoutRoot_OnLoaded(object sender, RoutedEventArgs e)
+        public void HideModuleWizard()
         {
-            throw new NotImplementedException();
+            ModuleWizardVisibility = Visibility.Collapsed;
+        }
+
+        public void ShowTimetable()
+        {
+            TimetableVisibility = Visibility.Visible;
+        }
+
+        public void HideTimetable()
+        {
+            TimetableVisibility = Visibility.Collapsed;
+        }
+
+        private void GetTimetableData()
+        {
+            var retrievalService = new WeekTimetableRetrieverService();
+
+            var weeklyTimetable = retrievalService.GetSchedule();
+            TimetablePage.UpdateWeek(weeklyTimetable);
+        }
+
+        private void OnPageLoad(object sender, RoutedEventArgs e)
+        {
+            GetTimetableData();
         }
     }
 }
