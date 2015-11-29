@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 using Microsoft.Phone.Controls;
 using Timetabling_App.Services;
 
@@ -13,12 +11,11 @@ namespace Timetabling_App
         public MainPage()
         {
             InitializeComponent();
-            getTimetableData();
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
 
-        private void getTimetableData()
+        private void GetTimetableData()
         {
             /*string URI = "http://mobile.nottingham.ac.uk/hack/data/timetabling/2015/activities/module/DEFE15F6B6D777913C727DD801F88C6B";
             WebRequest webRequest = WebRequest.Create(URI);
@@ -27,8 +24,15 @@ namespace Timetabling_App
             
 
             var retrievalService = new WeekTimetableRetrieverService();
-            var weeklyTimetable = retrievalService.getSchedule();
+            var formattingService = new DayFormatterService();
 
+            var weeklyTimetable = retrievalService.GetSchedule();
+
+            formattingService.Format(Monday, weeklyTimetable.Monday);
+            formattingService.Format(Tuesday, weeklyTimetable.Tuesday);
+            formattingService.Format(Wednesday, weeklyTimetable.Wednesday);
+            formattingService.Format(Thursday, weeklyTimetable.Thursday);
+            formattingService.Format(Friday, weeklyTimetable.Friday);
 
 
             //Service which gives back week object
@@ -37,7 +41,7 @@ namespace Timetabling_App
 
         private void LayoutRoot_OnLoaded(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            GetTimetableData();
         }
     }
 }
