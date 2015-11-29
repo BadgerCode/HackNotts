@@ -53,9 +53,9 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Border BorderThickness="0 0 0 0" BorderBrush="White" Padding="2" Grid.Row="0">
+                <Border BorderThickness="0 0 0 0" BorderBrush="White" Padding="5 2" Grid.Row="0">
                     <StackPanel x:Name="TitlePanel">
-                        <TextBlock Text="WEEK 11" Style="{StaticResource PhoneTextNormalStyle}"/>
+                        <TextBlock>Week</TextBlock>
                     </StackPanel>
                 </Border>
 
@@ -87,7 +87,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="5">
+                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10" Grid.Row="5">
                     <StackPanel Orientation="Vertical" >
                         <TextBlock FontSize="25">Friday</TextBlock>
                         <TextBlock>My text</TextBlock>

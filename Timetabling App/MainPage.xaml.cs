@@ -22,11 +22,6 @@ namespace Timetabling_App
             //BuildLocalizedApplicationBar();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Hello");
-        }
-
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
@@ -42,5 +37,9 @@ namespace Timetabling_App
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+        private void LayoutRoot_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
