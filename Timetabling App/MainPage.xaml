@@ -40,53 +40,61 @@
          -->
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="WEEK 11" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0" Height="31"/>
-        </StackPanel>
+        
 
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1" Margin="0,0,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1" HorizontalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height ="Auto"/>
-                <RowDefinition Height ="Auto"/>
-                <RowDefinition Height ="Auto"/>
-                <RowDefinition Height ="Auto"/>
-                <RowDefinition Height ="Auto"/>
-            </Grid.RowDefinitions>
+                <Border BorderThickness="0 0 0 0" BorderBrush="White" Padding="2" Grid.Row="0">
+                    <StackPanel x:Name="TitlePanel">
+                        <TextBlock Text="WEEK 11" Style="{StaticResource PhoneTextNormalStyle}"/>
+                    </StackPanel>
+                </Border>
 
-            <!--ContentPanel - place additional content here-->
-            <Grid x:Name="Day1"  Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Height="116" VerticalAlignment="Bottom" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="83*"/>
-                    <ColumnDefinition Width="21*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text ="Monday" Height="116" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
-                <TextBlock Text ="Monday" Height="116" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
-                <TextBlock Text ="Monday" Height="116" HorizontalAlignment="Stretch" Margin="0,29,0,-29" Grid.ColumnSpan="2"/>
-                <TextBlock Text ="Monday" Height="116" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
-                <TextBlock Text ="Monday" Height="116" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
-                <TextBlock HorizontalAlignment="Stretch" Margin="75,0,-376,84" Grid.Column="1">
-                	<Run Text="17:00 - 18:00 : G52AFP - "/>
-                	<Run Text="BSouth A32"/>
-                </TextBlock>
-            </Grid>
-            <Grid x:Name="Day2" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch">
-                <TextBlock Text ="Tuesday"  Height="116"/>
-            </Grid>
-            <Grid x:Name="Day3" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch">
-                <TextBlock Text ="Wednesday"  Height="116"/>
-            </Grid>
-            <Grid x:Name="Day4" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch">
-                <TextBlock Text ="Thursday" Height="116"/>
-            </Grid>
-            <Grid x:Name="Day5" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" >
-                <TextBlock Text ="Friday"  Height="116"/>
-            </Grid>
+                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="1">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock FontSize="25">Monday</TextBlock>
+                        <TextBlock>My text</TextBlock>
+                    </StackPanel>
+                </Border>
 
-        </Grid>
+                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="2">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock FontSize="25">Tuesday</TextBlock>
+                        <TextBlock>My text</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="3">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock FontSize="25">Wednesday</TextBlock>
+                        <TextBlock>My text</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="4">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock FontSize="25">Thursday</TextBlock>
+                        <TextBlock>My text</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="5">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock FontSize="25">Friday</TextBlock>
+                        <TextBlock>My text</TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </ScrollViewer>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
@@ -95,9 +103,6 @@
 
             Before shipping remove this XAML and the image itself.-->
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
-        
+
     </Grid>
-
-
-`<phone:PhoneApplicationPage.ApplicationBar></phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>
