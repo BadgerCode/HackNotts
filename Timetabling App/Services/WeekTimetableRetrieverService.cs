@@ -12,6 +12,21 @@ namespace Timetabling_App.Services
                 Monday = new List<Lecture>()
                 {
                     new Lecture() {EndTime = "10:00", StartTime = "9:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
+                    new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"},
                     new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"}
                 },
                 Tuesday = new List<Lecture>() { new Lecture() {EndTime = "11:00", StartTime = "10:00", ModuleCode = "G52AAA", Room = "My room"} },

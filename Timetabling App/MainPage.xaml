@@ -6,104 +6,47 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:timetablePage="clr-namespace:Timetabling_App.Pages.TimetablePage"
+    xmlns:moduleWizard="clr-namespace:Timetabling_App.Pages.ModuleWizard"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True" Loaded="LayoutRoot_OnLoaded">
+    shell:SystemTray.IsVisible="True" Loaded="OnPageLoad"
+    x:Name="Page" d:DataContext="{d:DesignInstance}">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <!-- LOCALIZATION NOTE:
-            To localize the displayed strings copy their values to appropriately named
-            keys in the app's neutral language resource file (AppResources.resx) then
-            replace the hard-coded text value between the attributes' quotation marks
-            with the binding clause whose path points to that string name.
+    <ScrollViewer x:Name="LayoutRoot" VerticalScrollBarVisibility="Visible">
 
-            For example:
+        <StackPanel Orientation="Vertical">
+            <moduleWizard:ModuleWizard x:Name="ModuleWizard" Visibility="{Binding Path=ModuleWizardVisibility}"></moduleWizard:ModuleWizard>
+            <timetablePage:TimetablePage x:Name="TimetablePage" Visibility="{Binding Path=TimetableVisibility}"></timetablePage:TimetablePage>
+        </StackPanel>
 
-                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+    </ScrollViewer>
 
-            This binding points to the template's string resource named "ApplicationTitle".
+    <!-- LOCALIZATION NOTE:
+        To localize the displayed strings copy their values to appropriately named
+        keys in the app's neutral language resource file (AppResources.resx) then
+        replace the hard-coded text value between the attributes' quotation marks
+        with the binding clause whose path points to that string name.
 
-            Adding supported languages in the Project Properties tab will create a
-            new resx file per language that can carry the translated values of your
-            UI strings. The binding in these examples will cause the value of the
-            attributes to be drawn from the .resx file that matches the
-            CurrentUICulture of the app at run time.
-         -->
+        For example:
 
-        <!--TitlePanel contains the name of the application and page title-->
+            Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
 
-        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1" Margin="0,0,0,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        This binding points to the template's string resource named "ApplicationTitle".
 
-                <Border BorderThickness="0 0 0 0" BorderBrush="White" Padding="5 2" Grid.Row="0">
-                    <StackPanel x:Name="TitlePanel">
-                        <TextBlock>Week</TextBlock>
-                    </StackPanel>
-                </Border>
+        Adding supported languages in the Project Properties tab will create a
+        new resx file per language that can carry the translated values of your
+        UI strings. The binding in these examples will cause the value of the
+        attributes to be drawn from the .resx file that matches the
+        CurrentUICulture of the app at run time.
+        -->
 
-                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="1">
-                    <StackPanel Orientation="Vertical" >
-                        <TextBlock FontSize="25">Monday</TextBlock>
-                        <StackPanel Name ="Monday"></StackPanel>
-                    </StackPanel>
-                </Border>
-
-                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="2">
-                    <StackPanel Orientation="Vertical" >
-                        <TextBlock FontSize="25">Tuesday</TextBlock>
-                        <StackPanel Name ="Tuesday"></StackPanel>
-                    </StackPanel>
-                </Border>
-
-                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="3">
-                    <StackPanel Orientation="Vertical" >
-                        <TextBlock FontSize="25">Wednesday</TextBlock>
-                        <StackPanel Name ="Wednesday"></StackPanel>
-                    </StackPanel>
-                </Border>
-
-                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="4">
-                    <StackPanel Orientation="Vertical" >
-                        <TextBlock FontSize="25">Thursday</TextBlock>
-                        <StackPanel Name ="Thursday"></StackPanel>
-                    </StackPanel>
-                </Border>
-
-                <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10" Grid.Row="5">
-                    <StackPanel Orientation="Vertical" >
-                        <TextBlock FontSize="25">Friday</TextBlock>
-                        <StackPanel Name ="Friday"></StackPanel>
-                    </StackPanel>
-                </Border>
-            </Grid>
-        </ScrollViewer>
-
-        <!--Uncomment to see an alignment grid to help ensure your controls are
-            aligned on common boundaries.  The image has a top margin of -32px to
-            account for the System Tray. Set this to 0 (or remove the margin altogether)
-            if the System Tray is hidden.
-
-            Before shipping remove this XAML and the image itself.-->
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
-    </Grid>
-
+    <!--TitlePanel contains the name of the application and page title-->
 
 
     <phone:PhoneApplicationPage.ApplicationBar>
