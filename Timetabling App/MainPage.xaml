@@ -61,35 +61,35 @@
                 <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="1">
                     <StackPanel Orientation="Vertical" >
                         <TextBlock FontSize="25">Monday</TextBlock>
-                        <TextBlock>My text</TextBlock>
+                        <StackPanel Name ="Monday"></StackPanel>
                     </StackPanel>
                 </Border>
 
                 <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="2">
                     <StackPanel Orientation="Vertical" >
                         <TextBlock FontSize="25">Tuesday</TextBlock>
-                        <TextBlock>My text</TextBlock>
+                        <StackPanel Name ="Tuesday"></StackPanel>
                     </StackPanel>
                 </Border>
 
                 <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="3">
                     <StackPanel Orientation="Vertical" >
                         <TextBlock FontSize="25">Wednesday</TextBlock>
-                        <TextBlock>My text</TextBlock>
+                        <StackPanel Name ="Wednesday"></StackPanel>
                     </StackPanel>
                 </Border>
 
                 <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10 10 10 20" Grid.Row="4">
                     <StackPanel Orientation="Vertical" >
                         <TextBlock FontSize="25">Thursday</TextBlock>
-                        <TextBlock>My text</TextBlock>
+                        <StackPanel Name ="Thursday"></StackPanel>
                     </StackPanel>
                 </Border>
 
                 <Border BorderThickness="0 2 0 0" BorderBrush="White" Padding="10" Grid.Row="5">
                     <StackPanel Orientation="Vertical" >
                         <TextBlock FontSize="25">Friday</TextBlock>
-                        <TextBlock>My text</TextBlock>
+                        <StackPanel Name ="Friday"></StackPanel>
                     </StackPanel>
                 </Border>
             </Grid>
