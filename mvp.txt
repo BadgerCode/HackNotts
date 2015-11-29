@@ -1,0 +1,22 @@
+# Look up module timetables
+	X Search via year -> school -> course -> year of course -> module
+	X Search via year -> course -> year of course -> module
+	# Search via school -> course -> year of course -> module
+
+# Save a timetable of modules
+	# Add/remove modules
+	X Save multiple timetables
+
+# View timetable of modules
+	X Show all weeks of term
+		X Scroll between weeks of term
+	# Open to current week
+	# Styling
+		# Show all days for one week on one page
+			# Allow vertical scrolling
+		# Show date next to day name
+		# In each day block, list modules in ascending time order
+			# Start time - End time: Module short code - Room
+			X Click on module to expand information
+				X Time, lecturer, name, etc.
+			# Auto expand to fit contents
