@@ -23,6 +23,14 @@
             <moduleWizard:SelectCourse x:Name="CoursePage" Visibility="{Binding CourseVisibility}"/>
         </Border>
 
+        <Border Grid.Row="0">
+            <moduleWizard:SelectYearOfCourse x:Name="YearOfCoursePage" Visibility="{Binding YearOfCourseVisibility}"/>
+        </Border>
+
+        <Border Grid.Row="0">
+            <moduleWizard:SelectModules x:Name="ModulesPage" Visibility="{Binding ModulesVisibility}"/>
+        </Border>
+
         <Border Grid.Row="1" Margin="0 50 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>

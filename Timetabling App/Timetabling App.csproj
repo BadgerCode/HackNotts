@@ -103,6 +103,12 @@
     <Compile Include="Pages\ModuleWizard\ModuleWizard.xaml.cs">
       <DependentUpon>ModuleWizard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ModuleWizard\SelectModules.xaml.cs">
+      <DependentUpon>SelectModules.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ModuleWizard\SelectYearOfCourse.xaml.cs">
+      <DependentUpon>SelectYearOfCourse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TimetablePage\TimetablePage.xaml.cs">
       <DependentUpon>TimetablePage.xaml</DependentUpon>
     </Compile>
@@ -139,7 +145,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ModuleWizard\SelectModules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ModuleWizard\SelectSchool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ModuleWizard\SelectYearOfCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
