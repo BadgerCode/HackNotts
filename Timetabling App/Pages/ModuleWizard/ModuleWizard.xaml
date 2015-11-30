@@ -3,14 +3,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:timetablingApp="clr-namespace:Timetabling_App"
+    xmlns:moduleWizard="clr-namespace:Timetabling_App.Pages.ModuleWizard"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}">
     
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <timetablingApp:SelectCourse></timetablingApp:SelectCourse>
-        <timetablingApp:SelectSchool></timetablingApp:SelectSchool>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0">
+            <moduleWizard:SelectSchool x:Name="SchoolPage" Visibility="{Binding SchoolVisibility}"/>
+        </Border>
+
+        <Border Grid.Row="0">
+            <moduleWizard:SelectCourse x:Name="CoursePage" Visibility="{Binding CourseVisibility}"/>
+        </Border>
+
+        <Border Grid.Row="1" Margin="0 50 0 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" HorizontalAlignment="Center" Background="Black" BorderThickness="2" Padding="10 5 10 5" Click="BackButtonClick">Back</Button>
+                <Button Grid.Column="1" HorizontalAlignment="Center" Background="Black" BorderThickness="2" Padding="10 5 10 5" Click="NextButtonClick">Next</Button>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

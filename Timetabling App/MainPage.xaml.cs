@@ -1,42 +1,59 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Windows;
 using Microsoft.Phone.Controls;
+using Timetabling_App.Models;
 using Timetabling_App.Services;
 
 namespace Timetabling_App
 {
+    public class MainScope : BaseScope
+    {
+        private Visibility _moduleWizardVisibility;
+        public Visibility ModuleWizardVisibility { get { return _moduleWizardVisibility; } set { SetProperty(ref _moduleWizardVisibility, value); } }
+
+        private Visibility _timetableVisibility;
+        public Visibility TimetableVisibility { get { return _timetableVisibility; } set { SetProperty(ref _timetableVisibility, value); } }
+    }
+
     public partial class MainPage : PhoneApplicationPage
     {
-        public List<string> ModuleIds { get; set; }
-
-        public Visibility ModuleWizardVisibility = Visibility.Visible;
-        public Visibility TimetableVisibility = Visibility.Collapsed;
+        public MainScope Scope { get; set; }
 
         public MainPage()
         {
-            ModuleIds = new List<string>();
-
             InitializeComponent();
+
+            Scope = new MainScope();
+            InitializeScope();
+
+            ModuleWizard.DataContext = Scope;
+            TimetablePage.DataContext = Scope;
+        }
+
+        private void InitializeScope()
+        {
+            Scope.ModuleWizardVisibility = Visibility.Visible;
+            Scope.TimetableVisibility = Visibility.Collapsed;
         }
 
         public void ShowModuleWizard()
         {
-            ModuleWizardVisibility = Visibility.Visible;
+            Scope.ModuleWizardVisibility = Visibility.Visible;
         }
 
         public void HideModuleWizard()
         {
-            ModuleWizardVisibility = Visibility.Collapsed;
+            Scope.ModuleWizardVisibility = Visibility.Collapsed;
         }
 
         public void ShowTimetable()
         {
-            TimetableVisibility = Visibility.Visible;
+            Scope.TimetableVisibility = Visibility.Visible;
         }
 
         public void HideTimetable()
         {
-            TimetableVisibility = Visibility.Collapsed;
+            Scope.TimetableVisibility = Visibility.Collapsed;
         }
 
         private void GetTimetableData()
@@ -50,6 +67,18 @@ namespace Timetabling_App
         private void OnPageLoad(object sender, RoutedEventArgs e)
         {
             GetTimetableData();
+        }
+
+        private void OpenTimetable(object sender, EventArgs e)
+        {
+            HideModuleWizard();
+            ShowTimetable();
+        }
+
+        private void OpenModuleWizard(object sender, EventArgs e)
+        {
+            HideTimetable();
+            ShowModuleWizard();
         }
     }
 }

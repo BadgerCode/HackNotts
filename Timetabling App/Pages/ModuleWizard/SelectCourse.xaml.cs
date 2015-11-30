@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Timetabling_App
+namespace Timetabling_App.Pages.ModuleWizard
 {
     public partial class SelectCourse : UserControl
     {
