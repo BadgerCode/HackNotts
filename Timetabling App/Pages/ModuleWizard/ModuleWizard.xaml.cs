@@ -57,21 +57,12 @@ namespace Timetabling_App.Pages.ModuleWizard
             InitializeComponent();
 
             _successCallbacks = new List<Action<IList<string>>>();
-            Scope = new ModuleWizardScope();
-            InitializeScope();
-
-            SchoolPage.DataContext = Scope;
-            CoursePage.DataContext = Scope;
-            YearOfCoursePage.DataContext = Scope;
-            ModulesPage.DataContext = Scope;
-
-            BackButton.DataContext = Scope;
-            NextButton.DataContext = Scope;
-            SaveButton.DataContext = Scope;
         }
 
         private void InitializeScope()
         {
+            Scope.CurrentStage = ModuleWizardStage.SelectSchool;
+
             Scope.SchoolVisibility = Visibility.Visible;
             Scope.CourseVisibility = Visibility.Collapsed;
             Scope.YearOfCourseVisibility = Visibility.Collapsed;
@@ -150,6 +141,26 @@ namespace Timetabling_App.Pages.ModuleWizard
         public void OnSuccess(Action<IList<string>> callback)
         {
             _successCallbacks.Add(callback);
+        }
+
+        public void Initialize()
+        {
+            Scope = new ModuleWizardScope();
+            InitializeScope();
+
+            SchoolPage.DataContext = Scope;
+            CoursePage.DataContext = Scope;
+            YearOfCoursePage.DataContext = Scope;
+            ModulesPage.DataContext = Scope;
+
+            BackButton.DataContext = Scope;
+            NextButton.DataContext = Scope;
+            SaveButton.DataContext = Scope;
+
+            SchoolPage.Initialize();
+            CoursePage.Initialize();
+            YearOfCoursePage.Initialize();
+            ModulesPage.Initialize();
         }
     }
 }

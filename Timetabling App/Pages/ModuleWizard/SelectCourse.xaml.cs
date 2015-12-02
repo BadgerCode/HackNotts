@@ -8,5 +8,10 @@ namespace Timetabling_App.Pages.ModuleWizard
         {
             InitializeComponent();
         }
+
+        public void Initialize()
+        {
+
+        }
     }
 }

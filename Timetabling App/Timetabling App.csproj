@@ -126,6 +126,7 @@
       <DependentUpon>SelectSchool.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DayFormatterService.cs" />
+    <Compile Include="Services\SchoolRetrievalService.cs" />
     <Compile Include="Services\WeekTimetableRetrieverService.cs" />
   </ItemGroup>
   <ItemGroup>

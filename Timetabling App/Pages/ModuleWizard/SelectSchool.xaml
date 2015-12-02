@@ -9,6 +9,12 @@
     Foreground="{StaticResource PhoneForegroundBrush}">
     
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <TextBlock>Select school</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0">Select school</TextBlock>
+        <ListBox Grid.Row="1" Name="SchoolsList"></ListBox>
     </Grid>
 </UserControl>

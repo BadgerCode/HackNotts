@@ -27,6 +27,7 @@ namespace Timetabling_App
             InitializeScope();
 
             ModuleWizard.DataContext = Scope;
+            ModuleWizard.Initialize();
             ModuleWizard.OnSuccess(ReloadTimetableModules);
 
             TimetablePage.DataContext = Scope;
@@ -34,8 +35,7 @@ namespace Timetabling_App
 
         private void ReloadTimetableModules(IList<string> moduleShortCodes)
         {
-            HideModuleWizard();
-            ShowTimetable();
+            OpenTimetable(null, null);
 
             TimetablePage.Scope.ModuleShortCodes = moduleShortCodes;
             TimetablePage.ReloadTimetableData();
@@ -75,12 +75,16 @@ namespace Timetabling_App
         private void OpenTimetable(object sender, EventArgs e)
         {
             HideModuleWizard();
+
             ShowTimetable();
         }
 
         private void OpenModuleWizard(object sender, EventArgs e)
         {
             HideTimetable();
+
+            ModuleWizard.Initialize();
+
             ShowModuleWizard();
         }
     }
