@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using Microsoft.Phone.Controls;
 using Timetabling_App.Models;
-using Timetabling_App.Services;
 
 namespace Timetabling_App
 {
@@ -27,7 +27,18 @@ namespace Timetabling_App
             InitializeScope();
 
             ModuleWizard.DataContext = Scope;
+            ModuleWizard.OnSuccess(ReloadTimetableModules);
+
             TimetablePage.DataContext = Scope;
+        }
+
+        private void ReloadTimetableModules(IList<string> moduleShortCodes)
+        {
+            HideModuleWizard();
+            ShowTimetable();
+
+            TimetablePage.Scope.ModuleShortCodes = moduleShortCodes;
+            TimetablePage.ReloadTimetableData();
         }
 
         private void InitializeScope()
@@ -56,17 +67,9 @@ namespace Timetabling_App
             Scope.TimetableVisibility = Visibility.Collapsed;
         }
 
-        private void GetTimetableData()
-        {
-            var retrievalService = new WeekTimetableRetrieverService();
-
-            var weeklyTimetable = retrievalService.GetSchedule();
-            TimetablePage.UpdateWeek(weeklyTimetable);
-        }
-
         private void OnPageLoad(object sender, RoutedEventArgs e)
         {
-            GetTimetableData();
+
         }
 
         private void OpenTimetable(object sender, EventArgs e)

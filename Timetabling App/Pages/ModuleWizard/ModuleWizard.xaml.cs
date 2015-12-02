@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using Timetabling_App.Models;
 
@@ -6,6 +8,9 @@ namespace Timetabling_App.Pages.ModuleWizard
 {
     public class ModuleWizardScope : BaseScope
     {
+        private IList<string> _moduleShortCodes;
+        public IList<string> ModuleShortCodes { get { return _moduleShortCodes; } set { SetProperty(ref _moduleShortCodes, value); } } 
+
         private ModuleWizardStage _currentStage;
         public ModuleWizardStage CurrentStage { get { return _currentStage; } set { SetProperty(ref _currentStage, value); } }
 
@@ -20,6 +25,17 @@ namespace Timetabling_App.Pages.ModuleWizard
 
         private Visibility _modulesVisibility;
         public Visibility ModulesVisibility { get { return _modulesVisibility; } set { SetProperty(ref _modulesVisibility, value); } }
+
+        public Visibility ShowBackButton => _currentStage != ModuleWizardStage.SelectSchool ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility ShowNextButton => _currentStage != ModuleWizardStage.SelectModules ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility ShowSaveButton => _currentStage == ModuleWizardStage.SelectModules ? Visibility.Visible : Visibility.Collapsed;
+
+        public void UpdateButtons()
+        {
+            OnPropertyChanged(nameof(ShowBackButton));
+            OnPropertyChanged(nameof(ShowNextButton));
+            OnPropertyChanged(nameof(ShowSaveButton));
+        }
     }
 
     public enum ModuleWizardStage
@@ -34,10 +50,13 @@ namespace Timetabling_App.Pages.ModuleWizard
     {
         public ModuleWizardScope Scope { get; set; }
 
+        private readonly List<Action<IList<string>>> _successCallbacks;
+
         public ModuleWizard()
         {
             InitializeComponent();
 
+            _successCallbacks = new List<Action<IList<string>>>();
             Scope = new ModuleWizardScope();
             InitializeScope();
 
@@ -45,6 +64,10 @@ namespace Timetabling_App.Pages.ModuleWizard
             CoursePage.DataContext = Scope;
             YearOfCoursePage.DataContext = Scope;
             ModulesPage.DataContext = Scope;
+
+            BackButton.DataContext = Scope;
+            NextButton.DataContext = Scope;
+            SaveButton.DataContext = Scope;
         }
 
         private void InitializeScope()
@@ -53,26 +76,34 @@ namespace Timetabling_App.Pages.ModuleWizard
             Scope.CourseVisibility = Visibility.Collapsed;
             Scope.YearOfCourseVisibility = Visibility.Collapsed;
             Scope.ModulesVisibility = Visibility.Collapsed;
+
+            Scope.ModuleShortCodes = new List<string>();
+
+            Scope.UpdateButtons();
         }
 
-        public void PreviousStage()
+        private void PreviousStage()
         {
-            if (Scope.CurrentStage - 1 >= ModuleWizardStage.SelectSchool)
-            {
-                Scope.CurrentStage--;
-            }
+            if (Scope.CurrentStage - 1 < ModuleWizardStage.SelectSchool) return;
 
+            Scope.CurrentStage--;
             UpdateCurrentStage();
         }
 
-        public void NextStage()
+        private void NextStage()
         {
-            if (Scope.CurrentStage + 1 <= ModuleWizardStage.SelectModules)
-            {
-                Scope.CurrentStage++;
-            }
+            if (Scope.CurrentStage + 1 > ModuleWizardStage.SelectModules) return;
 
+            Scope.CurrentStage++;
             UpdateCurrentStage();
+        }
+
+        private void FinishWizard()
+        {
+            foreach (var successCallback in _successCallbacks)
+            {
+                successCallback(Scope.ModuleShortCodes);
+            }
         }
 
         private void UpdateCurrentStage()
@@ -97,6 +128,8 @@ namespace Timetabling_App.Pages.ModuleWizard
                     Scope.ModulesVisibility = Visibility.Visible;
                     break;
             }
+
+            Scope.UpdateButtons();
         }
 
         private void NextButtonClick(object sender, RoutedEventArgs e)
@@ -107,6 +140,16 @@ namespace Timetabling_App.Pages.ModuleWizard
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
             PreviousStage();
+        }
+
+        private void FinishButtonClick(object sender, RoutedEventArgs e)
+        {
+            FinishWizard();
+        }
+
+        public void OnSuccess(Action<IList<string>> callback)
+        {
+            _successCallbacks.Add(callback);
         }
     }
 }

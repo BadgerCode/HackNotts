@@ -38,8 +38,21 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" HorizontalAlignment="Center" Background="Black" BorderThickness="2" Padding="10 5 10 5" Click="BackButtonClick">Back</Button>
-                <Button Grid.Column="1" HorizontalAlignment="Center" Background="Black" BorderThickness="2" Padding="10 5 10 5" Click="NextButtonClick">Next</Button>
+                <Button Grid.Column="0" x:Name="BackButton" HorizontalAlignment="Center" Background="Black" 
+                        BorderThickness="2" Padding="10 5 10 5" Click="BackButtonClick" Visibility="{Binding ShowBackButton}">
+                    Back
+                </Button>
+
+                <Button Grid.Column="1" x:Name="NextButton" HorizontalAlignment="Center" Background="Black" 
+                        BorderThickness="2" Padding="10 5 10 5" Click="NextButtonClick" Visibility="{Binding ShowNextButton}">
+                    Next
+                </Button>
+
+                <Button Grid.Column="0" Grid.ColumnSpan="2" x:Name="SaveButton" HorizontalAlignment="Center" 
+                        Background="Black" BorderThickness="2" Padding="10 5 10 5" Click="FinishButtonClick" 
+                        Visibility="{Binding ShowSaveButton}">
+                    Save
+                </Button>
             </Grid>
         </Border>
     </Grid>
